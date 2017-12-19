@@ -35,12 +35,14 @@ App::uses('WebzashAppModel', 'Webzash.Model');
 */
 class Setting extends WebzashAppModel {
 
+	public $validationDomain = 'webzash';
+
 	/* Validation rules for the Setting table */
 	public $validate = array(
 
 		'id' => array(
 			'rule1' => array(
-				'rule' => 'notEmpty',
+				'rule' => 'notBlank',
 				'message' => 'Settings id cannot be empty',
 				'required' => true,
 				'allowEmpty' => false,
@@ -55,7 +57,7 @@ class Setting extends WebzashAppModel {
 
 		'name' => array(
 			'rule1' => array(
-				'rule' => 'notEmpty',
+				'rule' => 'notBlank',
 				'message' => 'Company / Personal Name name cannot be empty',
 				'required' => true,
 				'allowEmpty' => false,

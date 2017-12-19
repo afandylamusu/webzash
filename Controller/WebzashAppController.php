@@ -77,6 +77,17 @@ class WebzashAppController extends AppController {
 	);
 
 	function beforeFilter() {
+		parent::beforeFilter();
+
+		/* Uncomment ANY of the below line to enable translation of the application in your langauge */
+		// Configure::write('Config.language', 'fra');
+		// CakeSession::write('Config.language', 'fra');
+
+		/* CSRF Token Expiry timelimit, change this to set the expiry time for CSRF Tokens */
+		// $this->Security->csrfExpires = '+1 seconds';
+
+		/* Better error messages for blackhole errors */
+		$this->Security->blackHoleCallback = 'blackholeErrorCallback';
 
 		/* Read URL to get the controller name */
 		$url_params = Router::getParams();
@@ -194,6 +205,13 @@ class WebzashAppController extends AppController {
 		}
 
 		Configure::write('Account.ET', $entrytypes);
+	}
+
+	/* Custom handling of blackhole error message */
+	public function blackholeErrorCallback($type)
+	{
+		$this->Session->setFlash(__d('webzash', 'CSRF Token Expired ! You have exceeded the time limit set to complete a request, so for security reasons you need to redo whatever you were trying to do.'), 'danger');
+		return $this->redirect(array('plugin' => 'webzash', 'controller' => 'dashboard', 'action' => 'index'));
 	}
 
 	public function isAuthorized($user) {

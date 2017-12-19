@@ -35,11 +35,13 @@ App::uses('WebzashAppModel', 'Webzash.Model');
 */
 class Wzuser extends WebzashAppModel {
 
+	public $validationDomain = 'webzash';
+
 	/* Validation rules for the Wzuser table */
 	public $validate = array(
 		'username' => array(
 			'rule1' => array(
-				'rule' => 'notEmpty',
+				'rule' => 'notBlank',
 				'message' => 'Username cannot be empty',
 				'required' => true,
 				'allowEmpty' => false,
@@ -59,7 +61,7 @@ class Wzuser extends WebzashAppModel {
 		),
 		'fullname' => array(
 			'rule1' => array(
-				'rule' => 'notEmpty',
+				'rule' => 'notBlank',
 				'message' => 'Fullname cannot be empty',
 				'required' => true,
 				'allowEmpty' => false,
@@ -73,7 +75,7 @@ class Wzuser extends WebzashAppModel {
 		),
 		'password' => array(
 			'rule1' => array(
-				'rule' => 'notEmpty',
+				'rule' => 'notBlank',
 				'message' => 'Password cannot be empty',
 				'required' => true,
 				'allowEmpty' => false,
@@ -81,7 +83,7 @@ class Wzuser extends WebzashAppModel {
 		),
 		'email' => array(
 			'rule1' => array(
-				'rule' => 'notEmpty',
+				'rule' => 'notBlank',
 				'message' => 'Email cannot be empty',
 				'required' => true,
 				'allowEmpty' => false,
@@ -101,7 +103,7 @@ class Wzuser extends WebzashAppModel {
 		),
 		'timezone' => array(
 			'rule1' => array(
-				'rule' => 'notEmpty',
+				'rule' => 'notBlank',
 				'message' => 'Timezone cannot be empty',
 				'required' => true,
 				'allowEmpty' => false,
@@ -109,7 +111,7 @@ class Wzuser extends WebzashAppModel {
 		),
 		'role' => array(
 			'rule1' => array(
-				'rule' => 'notEmpty',
+				'rule' => 'notBlank',
 				'message' => 'Role cannot be empty',
 				'required' => true,
 				'allowEmpty' => false,
@@ -123,7 +125,7 @@ class Wzuser extends WebzashAppModel {
 		),
 		'status' => array(
 			'rule1' => array(
-				'rule' => 'notEmpty',
+				'rule' => 'notBlank',
 				'message' => 'Status cannot be empty',
 				'required' => true,
 				'allowEmpty' => false,
@@ -137,7 +139,7 @@ class Wzuser extends WebzashAppModel {
 		),
 		'email_verified' => array(
 			'rule1' => array(
-				'rule' => 'notEmpty',
+				'rule' => 'notBlank',
 				'message' => 'Email verified cannot be empty',
 				'required' => true,
 				'allowEmpty' => false,
@@ -151,7 +153,7 @@ class Wzuser extends WebzashAppModel {
 		),
 		'admin_verified' => array(
 			'rule1' => array(
-				'rule' => 'notEmpty',
+				'rule' => 'notBlank',
 				'message' => 'Administrator approved cannot be empty',
 				'required' => true,
 				'allowEmpty' => false,
@@ -179,7 +181,7 @@ class Wzuser extends WebzashAppModel {
 		),
 		'all_accounts' => array(
 			'rule1' => array(
-				'rule' => 'notEmpty',
+				'rule' => 'notBlank',
 				'message' => 'All accounts access cannot be empty',
 				'required' => true,
 				'allowEmpty' => false,

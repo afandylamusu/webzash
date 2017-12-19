@@ -83,10 +83,9 @@ $(document).ready(function() {
 
 <div class="row">
 	<div class="btn-group col-md-4">
-		<button type="button" class="btn btn-primary"><?php echo  __d('webzash', 'Add Entry'); ?></button>
 		<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+			<?php echo  __d('webzash', 'Add Entry'); ?>&nbsp;
 			<span class="caret"></span>
-			<span class="sr-only">Toggle Dropdown</span>
 		</button>
 		<ul class="dropdown-menu" role="menu">
 		<?php
@@ -131,7 +130,16 @@ foreach ($entries as $entry) {
 	echo '<tr>';
 	echo '<td>' . dateFromSql($entry['Entry']['date']) . '</td>';
 	echo '<td>' . h(toEntryNumber($entry['Entry']['number'], $entry['Entry']['entrytype_id'])) . '</td>';
-	echo '<td>' . h($this->Generic->entryLedgers($entry['Entry']['id'])) . '</td>';
+
+	echo '<td>';
+	echo h($this->Generic->entryLedgers($entry['Entry']['id']));
+	if (strlen($entry['Entry']['narration']) > 0) {
+		echo '<br/>' . $this->Html->tag('span', substr(h($entry['Entry']['narration']), 0, 60) . '...', array('class' => 'text-small'));
+	} else {
+		echo h($this->Generic->entryLedgers($entry['Entry']['id']));
+	}
+	echo '</td>';
+
 	echo '<td>' . h($entryTypeName) . '</td>';
 	echo '<td>' . $this->Generic->showTag($entry['Entry']['tag_id']) . '</td>';
 	echo '<td>' . toCurrency('D', $entry['Entry']['dr_total']) . '</td>';

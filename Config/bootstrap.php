@@ -29,7 +29,7 @@
 
 /* Application name and url */
 Configure::write('Webzash.AppName', "Webzash");
-Configure::write('Webzash.AppVersion', "2.6");
+Configure::write('Webzash.AppVersion', "2.7");
 Configure::write('Webzash.AppDatabaseVersion', "6");
 Configure::write('Webzash.AppURL', "http://webzash.org");
 
@@ -294,7 +294,7 @@ function toEntryNumber($number, $entrytype_id) {
  * This function returns the ledger or group name with code if present
  */
 function toCodeWithName($code, $name) {
-	if (empty($code)) {
+	if (strlen($code) <= 0) {
 		return $name;
 	} else {
 		return '[' . $code . '] ' . $name;

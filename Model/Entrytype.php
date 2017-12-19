@@ -35,11 +35,13 @@ App::uses('WebzashAppModel', 'Webzash.Model');
 */
 class Entrytype extends WebzashAppModel {
 
+	public $validationDomain = 'webzash';
+
 	/* Validation rules for the Entrytypes table */
 	public $validate = array(
 		'label' => array(
 			'rule1' => array(
-				'rule' => 'notEmpty',
+				'rule' => 'notBlank',
 				'message' => 'Label cannot be empty',
 				'required' => true,
 				'allowEmpty' => false,
@@ -71,7 +73,7 @@ class Entrytype extends WebzashAppModel {
 		),
 		'name' => array(
 			'rule1' => array(
-				'rule' => 'notEmpty',
+				'rule' => 'notBlank',
 				'message' => 'Name cannot be empty',
 				'required' => true,
 				'allowEmpty' => false,
